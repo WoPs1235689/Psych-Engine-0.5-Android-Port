@@ -230,6 +230,7 @@ class PlayState extends MusicBeatState
 	var bgGhouls:BGSprite;
 
 	public var songScore:Int = 0;
+	public var botSongScore:Int = 0;
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
 	public var scoreTxt:FlxText;
@@ -1353,23 +1354,22 @@ class PlayState extends MusicBeatState
 	}
 
 	public function updateScore()
-                {
-                                if (ClientPrefs.scoreStyle == 'Random Engine') {
-					scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Acc: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Rank: ' + ratingName + ' (' + ratingFC + ')' ;//peeps wanted no integer rating
-					if (cpuControlled)                        
-					scoreTxt.text = 'BotScore: ' + songScore + ' // Misses: ' + songMisses + ' // Acc: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Rank: ' + ratingName + ' (' + ratingFC + ')' ;//peeps wanted no integer rating
-				}
-                                else if (ClientPrefs.scoreStyle == 'Psych Engine') {
-                                        scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName  + ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;//peeps wanted no integer rating
-                                        if (cpuControlled)
-                                        scoreTxt.text = 'BotScore: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName + ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;//peeps wanted no integer rating
-                                }
-                                else if (ClientPrefs.scoreStyle == 'Score Only') {
-                                        scoreTxt.text = 'Score: ' + songScore;
-                                        if (cpuControlled)
-                                        scoreTxt.text = 'BotScore: ' + songScore;
-                                }
-                }
+        {
+		var lol:String = 'Score:' + songScore; //simple fix
+		scoreTxt.text = lol;
+		if (cpuControlled)
+			lol = 'BotScore:' + botSongScore;
+
+		switch (ClientPrefs.scoreStyle)
+		{
+                        case 'Random Engine':
+				   scoreTxt.text = lol + ' // Misses: ' + songMisses + ' // Acc: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Rank: ' + ratingName + ' (' + ratingFC + ')' ;//peeps wanted no integer rating
+				
+                        case 'Psych Engine':
+                                   scoreTxt.text = lol + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName  + ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;//peeps wanted no integer rating
+             
+	                }
+         }
 
 	public function addShaderToCamera(cam:String, effect:ShaderEffect)
 	{ // STOLE FROM ANDROMEDA
@@ -3518,6 +3518,7 @@ class PlayState extends MusicBeatState
 				});
 			}
 		}
+		botSongScore += score;
 
 		/* if (combo > 60)
 				daRating = 'sick';
@@ -3537,9 +3538,6 @@ class PlayState extends MusicBeatState
 		}
 
 		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
-		if (!ClientPrefs.detachedCam){
-		rating.cameras = [camHUD];
-		}
 		rating.screenCenter();
 		rating.x = coolText.x - 40;
 		rating.y -= 60;
@@ -3568,10 +3566,8 @@ class PlayState extends MusicBeatState
 		msTxt.borderStyle = OUTLINE;
 		msTxt.borderSize = 1;
 		msTxt.borderColor = FlxColor.BLACK;
-		msTxt.text = msTiming + "ms";
+		msTxt.text = msTiming + " ms";
 		msTxt.size = 20;
-		if (!ClientPrefs.detachedCam)
-		msTxt.cameras = [camHUD];
 
 		if (msTxt.alpha != 1)  {
 				msTxt.alpha = 1;
@@ -3601,7 +3597,6 @@ class PlayState extends MusicBeatState
 		msTxt.acceleration.y = 600;
 		msTxt.velocity.y -= 150;
 
-
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
 		msTxt.velocity.x += comboSpr.velocity.x;
 		insert(members.indexOf(strumLineNotes), rating);
@@ -3623,8 +3618,27 @@ class PlayState extends MusicBeatState
 		comboSpr.updateHitbox();
 		rating.updateHitbox();
 
+		if (!ClientPrefs.detachedCam)
+                {
+                        rating.cameras = [camHUD];
+                        msTxt.cameras = [camHUD];
+                        comboSpr.cameras = [camHUD];
+                }
+
 		var seperatedScore:Array<Int> = [];
 
+		var comboSplit:Array<String> = (combo + "").split('');
+
+//			if (comboSplit.length == 1)
+//				seperatedScore.push(0); // make sure theres a 0 in front or it looks weird lol!
+// anyways it shouldnt display when its below 10 so its fine
+
+			for(i in 0...comboSplit.length)
+			{
+				var str:String = comboSplit[i];
+				seperatedScore.push(Std.parseInt(str));
+			}
+	
 		if(combo >= 1000) {
 			seperatedScore.push(Math.floor(combo / 1000) % 10);
 		}
