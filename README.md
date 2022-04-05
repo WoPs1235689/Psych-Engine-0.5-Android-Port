@@ -1,5 +1,5 @@
-This is my custon copy of psych engine.
-its mostly things from kade.
+This is my custom copy of psych engine
+its mostly things from kade
 i just added my own options and added and fixed some stuffs.
 
 ## Credits:
