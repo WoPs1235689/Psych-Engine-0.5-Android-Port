@@ -79,7 +79,11 @@ class PlayState extends MusicBeatState
 		['S+', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
 	
-	
+	//SHADERS
+	public var camGameShaders:Array<ShaderEffect> = [];
+	public var camHUDShaders:Array<ShaderEffect> = [];
+	public var camOtherShaders:Array<ShaderEffect> = [];
+	public var shaderUpdates:Array<Float->Void> = [];
 	
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
 	public var modchartSprites:Map<String, ModchartSprite> = new Map<String, ModchartSprite>();
