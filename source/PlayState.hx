@@ -1518,6 +1518,14 @@ class PlayState extends MusicBeatState
 		#end
 		startAndEnd();
 	}
+
+	function startAndEnd()
+	{
+		if(endingSong)
+			endSong();
+		else
+			startCountdown();
+	}
 			
 	var dialogueCount:Int = 0;
 	//You don't have to add a song, just saying. You can just do "startDialogue(dialogueJson);" and it should work
