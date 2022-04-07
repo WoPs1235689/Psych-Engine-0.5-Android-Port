@@ -4,7 +4,7 @@ import openfl.net.NetStream;
 import openfl.events.NetStatusEvent;
 import openfl.media.Video;
 #elseif android
-import extension.webview.WebView;
+import extension.videoview.VideoView;
 import android.AndroidTools;
 #else
 import openfl.events.Event;
@@ -49,14 +49,15 @@ class FlxVideo extends FlxBasic {
 		});
 		netStream.play(name);
 
-		#elseif android
-	        WebView.playVideo(AndroidTools.getFileUrl(name), true, false);
-	        WebView.onComplete = function(){
-			if (finishCallback != null){
-				finishCallback();
-			}
-		}
+		
+	        #elseif android
 
+                VideoView.playVideo(AndroidTools.getFileUrl(name));
+                VideoView.onCompletion = function(){
+		        if (finishCallback != null){
+			        finishCallback();
+		        }
+                }
 		#elseif desktop
 		// by Polybius, check out PolyEngine! https://github.com/polybiusproxy/PolyEngine
 

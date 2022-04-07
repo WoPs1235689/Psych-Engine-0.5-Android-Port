@@ -7,6 +7,7 @@ i just added my own options and added and fixed some stuffs.
 * Kade Engine - Kade options and stuffs
 * Vs Tabi - Tabi option lol
 * Jigsaw - Porting psych engine
+* Andromeda - Shaders
 * Randomxd(me) - Putting it all together,and also some stuffs and some fixes 
 
 # Main Readme
