@@ -70,7 +70,7 @@ class ReUISubState extends BaseOptionsMenu
 
 		var option:Option = new Option('Song Info',
 			'If unchecked, hides Song info.',
-			'judgements',
+			'songInfo',
 			'bool',
 			true);
                 addOption(option);
