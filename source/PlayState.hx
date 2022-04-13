@@ -915,26 +915,33 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
-/*
-		laneunderlayOpponent = new FlxSprite(0, 0).makeGraphic(1,1);
+
+		laneunderlayOpponent = new FlxSprite(0, 0).makeGraphic(110 * 4 + 50, FlxG.height * 2);
 		laneunderlayOpponent.alpha = ClientPrefs.opponentLaneOpacity;
 		laneunderlayOpponent.color = FlxColor.BLACK;
 		laneunderlayOpponent.scrollFactor.set();
 
-		laneunderlay = new FlxSprite(0, 0).makeGraphic(1,1);
+		laneunderlay = new FlxSprite(0, 0).makeGraphic(110 * 4 + 50, FlxG.height * 2);
 		laneunderlay.alpha = ClientPrefs.laneOpacity;
 		laneunderlay.color = FlxColor.BLACK;
 		laneunderlay.scrollFactor.set();
-
+		if (!ClientPrefs.middleScroll)
 		add(laneunderlayOpponent);
-		add(laneunderlay); //not working
-*/
+
+		add(laneunderlay);
+		
 
 		if(ClientPrefs.timeBarType == 'Song Name')
 		{
 			timeTxt.size = 24;
 			timeTxt.y += 3;
 		}
+
+		if (ClientPrefs.timeBarType == 'Song Name' && ClientPrefs.timeBarType == 'Kade Engine')
+                {
+                        timeTxt.size = 18;
+                        timeTxt.y += 5;
+                }
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
@@ -1110,6 +1117,8 @@ class PlayState extends MusicBeatState
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
                 judgementCounter.cameras = [camHUD];
+		laneunderlay.cameras = [camHUD];
+		laneunderlayOpponent.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
 		addAndroidControls();	
@@ -1670,6 +1679,12 @@ class PlayState extends MusicBeatState
 			
 			generateStaticArrows(0);
 			generateStaticArrows(1);
+
+			laneunderlay.x = playerStrums.members[0].x - 25;
+			laneunderlayOpponent.x = cpuStrums.members[0].x - 25;
+
+			laneunderlay.screenCenter(Y);
+			laneunderlayOpponent.screenCenter(Y);
 
 			for (i in 0...playerStrums.length) {
 				setOnLuas('defaultPlayerStrumX' + i, playerStrums.members[i].x);
@@ -3629,9 +3644,19 @@ class PlayState extends MusicBeatState
 
 		var comboSplit:Array<String> = (combo + "").split('');
 
-//			if (comboSplit.length == 1)
-//				seperatedScore.push(0); // make sure theres a 0 in front or it looks weird lol!
-// anyways it shouldnt display when its below 10 so its fine
+                if (ClientPrefs.normalCombo)
+                  {
+			switch (comboSplit.length)
+                        {
+                                case 1:
+                                seperatedScore.push(0);
+                                seperatedScore.push(0);
+
+                                case 2:
+                                seperatedScore.push(0);
+                        }
+                  }
+// credits to kade engine
 
 			for(i in 0...comboSplit.length)
 			{
@@ -4080,7 +4105,7 @@ class PlayState extends MusicBeatState
 				if(combo > 9999) combo = 9999;
 			}
 
-			if (health != 2) 
+	//		if (health != 2) 
 			health += note.hitHealth * healthGain;
 			
 

@@ -42,10 +42,14 @@ class ClientPrefs {
 	// Arrow opacity stuff
 	public static var arrowOpacity:Float = 1;
 	public static var opponentArrowOpacity:Float = 1;
+	// Lane opacity stuff
+	public static var laneOpacity:Float = 1;
+	public static var opponentLaneOpacity:Float = 1;
 	// Misc Stuff
 	public static var antimash:Bool = true;
 	public static var memoryCounter:Bool = false;
 	public static var playHitSound:Bool = false;
+	public static var normalScore:Bool = false;
 // End
 	#if mobile
 	public static var controllerMode:Bool = true;
@@ -144,9 +148,13 @@ class ClientPrefs {
 		FlxG.save.data.iconBoping = iconBoping;
 		FlxG.save.data.detachedCam = detachedCam;
 		FlxG.save.data.keTimeBar = keTimeBar;
+		FlxG.save.data.normalScore = normalScore;
 		// Arrow opacity
 		FlxG.save.data.arrowOpacity = arrowOpacity;
 		FlxG.save.data.opponentArrowOpacity = opponentArrowOpacity;
+		// Lane opacity 
+		FlxG.save.data.laneOpacity = laneOpacity;
+                FlxG.save.data.opponentLaneOpacity = opponentLaneOpacity;
 // End
 
 		FlxG.save.data.ratingOffset = ratingOffset;
@@ -276,6 +284,13 @@ class ClientPrefs {
 		if(FlxG.save.data.opponentArrowOpacity != null) {
                         opponentArrowOpacity = FlxG.save.data.opponentArrowOpacity;
                 }
+		// Lane opacity 
+		if(FlxG.save.data.laneOpacity != null) {
+                        laneOpacity = FlxG.save.data.laneOpacity;
+                }
+                if(FlxG.save.data.opponentLaneOpacity != null) {
+                        opponentLaneOpacity = FlxG.save.data.opponentLaneOpacity;
+                }
 		// Misc stuff
 		if(FlxG.save.data.memoryCounter != null) {
                         memoryCounter = FlxG.save.data.memoryCounter;
@@ -283,6 +298,10 @@ class ClientPrefs {
 		if(FlxG.save.data.antimash != null) {
                         antimash = FlxG.save.data.antimash;
                 }
+		if(FlxG.save.data.normalScore != null) {
+                        normalScore = FlxG.save.data.normalScore;
+                }
+
 		if(FlxG.save.data.playHitSound != null) {
                         playHitSound = FlxG.save.data.playHitSound;
                 }

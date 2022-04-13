@@ -75,6 +75,13 @@ class ReUISubState extends BaseOptionsMenu
                         false);
                 addOption(option);
 
+		var option:Option = new Option('Normal Combo Count',
+                        'If checked adds extra 0es to the combo counter.',
+                        'normalScore',
+                        'bool',
+                        false);
+                addOption(option);
+
 		var option:Option = new Option('Detached Ratings',
                         'If checked, detaches the ratings from the camera.',
                         'detachedCam',
@@ -94,7 +101,7 @@ class ReUISubState extends BaseOptionsMenu
 		option.decimals = 1;
                 addOption(option);
 
-/*		var option:Option = new Option('Lane Opacity',
+		var option:Option = new Option('Lane Opacity',
                         'How Opaque should the lane underlay be.',
                         'laneOpacity',
                         'percent',
@@ -112,12 +119,12 @@ class ReUISubState extends BaseOptionsMenu
                         'percent',
                         1);
                 option.scrollSpeed = 1.6;
-z                option.minValue = 0.0;
+                option.minValue = 0.0;
                 option.maxValue = 1;
                 option.changeValue = 0.1;
                 option.decimals = 1;
-                addOption(option);  still pretty buggy :(
-*/
+                addOption(option);  // hope it works
+
                 var option:Option = new Option('Enemy Arrows Opacity',
                         'How Opaque should the opponent arrows be.',
                         'opponentArrowOpacity',
