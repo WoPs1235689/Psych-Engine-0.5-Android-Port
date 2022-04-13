@@ -38,6 +38,7 @@ class ClientPrefs {
 	public static var judgements:Bool = true;
 	public static var iconBoping:Bool = false;
         public static var detachedCam:Bool = false;
+	public static var detachedHUD:Bool = false;
 	public static var keTimeBar:Bool = false;
 	// Arrow opacity stuff
 	public static var arrowOpacity:Float = 1;
@@ -49,7 +50,7 @@ class ClientPrefs {
 	public static var antimash:Bool = true;
 	public static var memoryCounter:Bool = false;
 	public static var playHitSound:Bool = false;
-	public static var normalScore:Bool = false;
+	public static var normalCombo:Bool = false;
 // End
 	#if mobile
 	public static var controllerMode:Bool = true;
@@ -147,8 +148,9 @@ class ClientPrefs {
 		FlxG.save.data.scoreStyle = scoreStyle;
 		FlxG.save.data.iconBoping = iconBoping;
 		FlxG.save.data.detachedCam = detachedCam;
+		FlxG.save.data.detachedHUD = detachedHUD;
 		FlxG.save.data.keTimeBar = keTimeBar;
-		FlxG.save.data.normalScore = normalScore;
+		FlxG.save.data.normalCombo = normalCombo;
 		// Arrow opacity
 		FlxG.save.data.arrowOpacity = arrowOpacity;
 		FlxG.save.data.opponentArrowOpacity = opponentArrowOpacity;
@@ -277,6 +279,9 @@ class ClientPrefs {
 		if(FlxG.save.data.detachedCam != null) {
                         detachedCam = FlxG.save.data.detachedCam;
                 }
+		if(FlxG.save.data.detachedHUD != null) {
+			detachedHUD = FlxG.save.data.detachedHUD;
+                }
 		// Arrow Opacity
 		if(FlxG.save.data.arrowOpacity != null) {
                         arrowOpacity = FlxG.save.data.arrowOpacity;
@@ -298,8 +303,8 @@ class ClientPrefs {
 		if(FlxG.save.data.antimash != null) {
                         antimash = FlxG.save.data.antimash;
                 }
-		if(FlxG.save.data.normalScore != null) {
-                        normalScore = FlxG.save.data.normalScore;
+		if(FlxG.save.data.normalCombo != null) {
+                        normalCombo = FlxG.save.data.normalCombo;
                 }
 
 		if(FlxG.save.data.playHitSound != null) {
