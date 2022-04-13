@@ -862,6 +862,20 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.downScroll) strumLine.y = FlxG.height - 150;
 		strumLine.scrollFactor.set();
 
+		laneunderlayOpponent = new FlxSprite(0, 0).makeGraphic(110 * 4 + 50, FlxG.height * 2);
+                laneunderlayOpponent.alpha = ClientPrefs.opponentLaneOpacity;
+                laneunderlayOpponent.color = FlxColor.BLACK;
+                laneunderlayOpponent.scrollFactor.set();
+
+                laneunderlay = new FlxSprite(0, 0).makeGraphic(110 * 4 + 50, FlxG.height * 2);
+                laneunderlay.alpha = ClientPrefs.laneOpacity;
+                laneunderlay.color = FlxColor.BLACK;
+                laneunderlay.scrollFactor.set();
+                if (!ClientPrefs.middleScroll)
+                add(laneunderlayOpponent);
+
+                add(laneunderlay);
+
 		var showTime:Bool = (ClientPrefs.timeBarType != 'Disabled');
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
 		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -915,20 +929,6 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
-
-		laneunderlayOpponent = new FlxSprite(0, 0).makeGraphic(110 * 4 + 50, FlxG.height * 2);
-		laneunderlayOpponent.alpha = ClientPrefs.opponentLaneOpacity;
-		laneunderlayOpponent.color = FlxColor.BLACK;
-		laneunderlayOpponent.scrollFactor.set();
-
-		laneunderlay = new FlxSprite(0, 0).makeGraphic(110 * 4 + 50, FlxG.height * 2);
-		laneunderlay.alpha = ClientPrefs.laneOpacity;
-		laneunderlay.color = FlxColor.BLACK;
-		laneunderlay.scrollFactor.set();
-		if (!ClientPrefs.middleScroll)
-		add(laneunderlayOpponent);
-
-		add(laneunderlay);
 		
 
 		if(ClientPrefs.timeBarType == 'Song Name')
