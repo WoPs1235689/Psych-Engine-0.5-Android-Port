@@ -237,7 +237,7 @@ class PlayState extends MusicBeatState
         public var judgementCounter:FlxText;
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
-        var versionTxt:FlxText;
+        var songInfo:FlxText;
 	var healthCounter:FlxText;
 
 	public static var campaignScore:Int = 0;
@@ -1075,11 +1075,12 @@ class PlayState extends MusicBeatState
                 healthCounter.visible = ClientPrefs.healthCounter;
                 if(ClientPrefs.healthCounter) { add(healthCounter); }
 
-		versionTxt = new FlxText(5, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString() , 16);
-		versionTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		versionTxt.borderSize = 2;
-		versionTxt.scrollFactor.set();
-		add(versionTxt);
+		songInfo = new FlxText(5, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString() , 16);
+		songInfo.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		songInfo.borderSize = 2;
+		healthCounter.visible = ClientPrefs.songInfo;
+		songInfo.scrollFactor.set();
+		add(songInfo);
 
                 judgementCounter = new FlxText(20, 0, 0, "", 20);
                 judgementCounter.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1109,7 +1110,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-                versionTxt.cameras = [camOther];
+                songInfo.cameras = [camOther];
 //		laneunderlayOpponent.cameras = [camHUD];
 //		laneunderlay.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
@@ -1383,7 +1384,7 @@ class PlayState extends MusicBeatState
 
 	public function addShaderToCamera(cam:String, effect:ShaderEffect)
 	{ // STOLE FROM ANDROMEDA
-
+		if (ClientPrefs.flashing) { // to avoid epilepsia or smth idk
 		switch (cam.toLowerCase())
 		{
 			case 'camhud' | 'hud':
@@ -1424,6 +1425,7 @@ class PlayState extends MusicBeatState
 					var OBJ = Reflect.getProperty(PlayState.instance, cam);
 					Reflect.setProperty(OBJ, "shader", effect.shader);
 				}
+			}
 		}
 	}
 	

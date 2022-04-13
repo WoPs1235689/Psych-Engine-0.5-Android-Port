@@ -67,6 +67,13 @@ class ReUISubState extends BaseOptionsMenu
                         'bool',
                         true);
                 addOption(option);
+
+		var option:Option = new Option('Song Info',
+			'If unchecked, hides Song info.',
+			'judgements',
+			'bool',
+			true);
+                addOption(option);
 		
 		var option:Option = new Option('Play Hit Sounds',
                         'If checked enables hit sound.',
