@@ -49,12 +49,17 @@ class SUtil
 
         if (!grantedPermsList.contains(Permissions.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.WRITE_EXTERNAL_STORAGE)) {
             if (AndroidTools.getSDKversion() > 23 || AndroidTools.getSDKversion() == 23) {
-                SUtil.applicationAlert("Permissions", "If you accepted the permisions for storage, good, you can continue, if you not the game can't run without storage permissions please grant them in app settings" + "\n" + "Press Ok To Close The App");
+                SUtil.applicationAlert("Permissions", "if you dont grant the storage permission the game can't run and you will have to grant them in app settings" + "\n" + "Press Ok To Close The App Or Continue");
+                 if (!grantedPermsList.contains(Permissions.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.WRITE_EXTERNAL_STORAGE)) {
+                  AndroidTools.toast("You didnt grant the Permissions.");
+            } else {
+                  AndroidTools.toast("Good you can continue");
+                   }
             } else {
                 SUtil.applicationAlert("Permissions", "The Game can't run without storage permissions please grant them in app settings" + "\n" + "Press Ok To Close The App");
             }
         }
-
+        
         if (!FileSystem.exists(sPath + "/" + "." + Application.current.meta.get("file"))){
             FileSystem.createDirectory(sPath + "/" + "." + Application.current.meta.get("file"));
         }
@@ -64,12 +69,12 @@ class SUtil
         }
 
         if (!FileSystem.exists(SUtil.getPath() + "assets")){
-            SUtil.applicationAlert("Instructions:", "You have to copy assets/assets from apk to your internal storage app directory " + "( here " + SUtil.getPath() + " )" + "if you hadn't have Zarhiver Downloaded, download it and enable the show hidden files option to have the folder visible" + "\n" + "Press Ok To Close The App");
+            SUtil.applicationAlert("Instructions:", "You have to copy assets/assets from the apk to your internal storage app directory " + "( here " + SUtil.getPath() + " )" + "if you dont have Zarhiver installed, install it and enable the show hidden files option to be bale to see the folder" + "\n" + "Press Ok To Close The App");
 	    flash.system.System.exit(0);
         }
         
         if (!FileSystem.exists(SUtil.getPath() + "mods")){
-            SUtil.applicationAlert("Instructions:", "You have to copy assets/mods from apk to your internal storage app directory " + "( here " + SUtil.getPath() + " )" + "if you hadn't have Zarhiver Downloaded, download it and enable the show hidden files option to have the folder visible" + "\n" + "Press Ok To Close The App");
+            SUtil.applicationAlert("Instructions:", "You have to copy assets/mods from the apk to your internal storage app directory " + "( here " + SUtil.getPath() + " )" + "if you dont have Zarhiver Installed, Install it and enable the show hidden files option to be able to see the folder" + "\n" + "Press Ok To Close The App");
 	    flash.system.System.exit(0);
         }
         #end
