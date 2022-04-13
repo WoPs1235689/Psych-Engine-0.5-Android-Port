@@ -180,10 +180,10 @@ class PlayState extends MusicBeatState
 	public var instakillOnMiss:Bool = false;
 	public var cpuControlled:Bool = false;
 	public var practiceMode:Bool = false;
-/*	//lane underlay stuff
+	//lane underlay stuff
 	public var laneunderlay:FlxSprite;
 	public var laneunderlayOpponent:FlxSprite;
-*/
+
 
 	var botplaySine:Float = 0;
 	var botplayTxt:FlxText;
