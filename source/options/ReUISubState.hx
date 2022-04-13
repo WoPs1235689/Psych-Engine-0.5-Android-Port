@@ -83,11 +83,18 @@ class ReUISubState extends BaseOptionsMenu
                 addOption(option);
 
 		var option:Option = new Option('Detached Ratings',
-                        'If checked, detaches the ratings from the camera.',
+                        'If checked, detaches the ratings from the camera.(independent from detached HUD)',
                         'detachedCam',
                         'bool',
                         false);
                 addOption(option);
+
+		var option:Option = new Option('Detached HUD',
+                        'If checked, detaches the HUD (except the controls) from the camera.',
+                        'detachedHUD',
+                        'bool',
+                        false);
+		addOption(option);
 
 		var option:Option = new Option('Arrows Opacity',
                         'How Opaque should the arrows be.',

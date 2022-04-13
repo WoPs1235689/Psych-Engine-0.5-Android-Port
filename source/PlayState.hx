@@ -1100,6 +1100,7 @@ class PlayState extends MusicBeatState
 			botplayTxt.y = timeBarBG.y - 78;
 		}
 
+	if (!ClientPrefs.detachedHUD) {
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -1120,7 +1121,7 @@ class PlayState extends MusicBeatState
 		laneunderlay.cameras = [camHUD];
 		laneunderlayOpponent.cameras = [camHUD];
 		doof.cameras = [camHUD];
-
+	}
 		addAndroidControls();	
 
 		// if (SONG.song == 'South')
