@@ -1682,7 +1682,7 @@ class PlayState extends MusicBeatState
 			generateStaticArrows(1);
 
 			laneunderlay.x = playerStrums.members[0].x - 25;
-			laneunderlayOpponent.x = cpuStrums.members[0].x - 25;
+			laneunderlayOpponent.x = opponentStrums.members[0].x - 25;
 
 			laneunderlay.screenCenter(Y);
 			laneunderlayOpponent.screenCenter(Y);

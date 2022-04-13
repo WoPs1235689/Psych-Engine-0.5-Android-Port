@@ -77,7 +77,7 @@ class ReUISubState extends BaseOptionsMenu
 
 		var option:Option = new Option('Normal Combo Count',
                         'If checked adds extra 0es to the combo counter.',
-                        'normalScore',
+                        'normalCombo',
                         'bool',
                         false);
                 addOption(option);
