@@ -137,7 +137,7 @@ class ReUISubState extends BaseOptionsMenu
                 option.maxValue = 1;
                 option.changeValue = 0.1;
                 option.decimals = 1;
-                addOption(option);  /
+                addOption(option);  
 
                 var option:Option = new Option('Enemy Arrows Opacity',
                         'How Opaque should the opponent arrows be.',
