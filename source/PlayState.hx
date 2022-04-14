@@ -1061,7 +1061,14 @@ class PlayState extends MusicBeatState
 		else if (ClientPrefs.scoreType == 'Kade Engine') {
 		scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 50, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		}
+		} else { 
+		scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 50, 0, "", 20);
+                scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		} // lptm ne olvide de esto 
+		  // ves que el scoreTxt solo se definia si era ua de esas dos opciones
+		  // y me olvide de el disabled, si no se define el scoreTxt causa un crash
+		  // asique este else es como un "default"
+		 
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
