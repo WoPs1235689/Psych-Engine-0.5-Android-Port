@@ -1095,7 +1095,7 @@ class PlayState extends MusicBeatState
                 judgementCounter.borderQuality = 2;
                 judgementCounter.scrollFactor.set();
                 judgementCounter.screenCenter(Y);
-		judgementCounter.visible = ClientPrefs.judgements
+		judgementCounter.visible = ClientPrefs.judgements;
                 add(judgementCounter);
 
 
