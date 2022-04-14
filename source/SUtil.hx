@@ -51,9 +51,9 @@ class SUtil
             if (AndroidTools.getSDKversion() > 23 || AndroidTools.getSDKversion() == 23) {
                 SUtil.applicationAlert("Permissions", "if you dont grant the storage permission the game can't run and you will have to grant them in app settings" + "\n" + "Press Ok To Close The App Or Continue");
                  if (!grantedPermsList.contains(Permissions.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.WRITE_EXTERNAL_STORAGE)) {
-                  AndroidTools.toast("You didnt grant the Permissions.");
+                  AndroidTools.makeToast("You didnt grant the Permissions.");
             } else {
-                  AndroidTools.toast("Good you can continue");
+                  AndroidTools.makeToast("Good you can continue");
                    }
             } else {
                 SUtil.applicationAlert("Permissions", "The Game can't run without storage permissions please grant them in app settings" + "\n" + "Press Ok To Close The App");
@@ -131,6 +131,8 @@ class SUtil
         }
 
         sys.io.File.saveContent(SUtil.getPath() + "system-saves" + fileName + fileExtension, fileData);
-        SUtil.applicationAlert("", "File Saved Successfully!");
+        #if android
+        AndroidTools.makeToast("File Saved Successfully!");
+        #end
     }
 }
