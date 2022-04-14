@@ -68,6 +68,15 @@ class SUtil
             FileSystem.createDirectory(sPath + "/" + "." + Application.current.meta.get("file") + "/files");
         }
 
+	if (!FileSystem.exists(SUtil.getPath() + "log")){
+            FileSystem.createDirectory(SUtil.getPath() + "log");
+        }
+
+        if (!FileSystem.exists(SUtil.getPath() + "system-saves")){
+            FileSystem.createDirectory(SUtil.getPath() + "system-saves");
+        }
+
+
         if (!FileSystem.exists(SUtil.getPath() + "assets")){
             SUtil.applicationAlert("Instructions:", "You have to copy assets/assets from the apk to your internal storage app directory " + "( here " + SUtil.getPath() + " )" + "if you dont have Zarhiver installed, install it and enable the show hidden files option to be bale to see the folder" + "\n" + "Press Ok To Close The App");
 	    flash.system.System.exit(0);
