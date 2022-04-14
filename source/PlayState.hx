@@ -1073,7 +1073,7 @@ class PlayState extends MusicBeatState
                 healthCounter.borderSize = 1.25;
 		healthCounter.alpha = 1;
                 healthCounter.visible = ClientPrefs.healthCounter;
-                if(ClientPrefs.healthCounter) { add(healthCounter); }
+                 add(healthCounter); 
 
 		songInfo = new FlxText(5, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString() , 16);
 		songInfo.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1088,7 +1088,8 @@ class PlayState extends MusicBeatState
                 judgementCounter.borderQuality = 2;
                 judgementCounter.scrollFactor.set();
                 judgementCounter.screenCenter(Y);
-                if(ClientPrefs.judgements) {add(judgementCounter);}
+		judgementCounter.visible = ClientPrefs.judgements
+                add(judgementCounter);
 
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
