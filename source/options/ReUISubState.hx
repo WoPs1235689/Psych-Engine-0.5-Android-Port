@@ -131,19 +131,19 @@ class ReUISubState extends BaseOptionsMenu
                         'How Opaque should the opponent lane be.',
                         'opponentLaneOpacity',
                         'percent',
-                        1);
+                        0);
                 option.scrollSpeed = 1.6;
                 option.minValue = 0.0;
                 option.maxValue = 1;
                 option.changeValue = 0.1;
                 option.decimals = 1;
-                addOption(option);  // hope it works
+                addOption(option);  /
 
                 var option:Option = new Option('Enemy Arrows Opacity',
                         'How Opaque should the opponent arrows be.',
                         'opponentArrowOpacity',
                         'percent',
-                        1);
+                        0);
                 option.scrollSpeed = 1.6;
                 option.minValue = 0.0;
                 option.maxValue = 1;

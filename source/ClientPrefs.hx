@@ -45,8 +45,8 @@ class ClientPrefs {
 	public static var arrowOpacity:Float = 1;
 	public static var opponentArrowOpacity:Float = 1;
 	// Lane opacity stuff
-	public static var laneOpacity:Float = 1;
-	public static var opponentLaneOpacity:Float = 1;
+	public static var laneOpacity:Float = 0;
+	public static var opponentLaneOpacity:Float = 0;
 	// Misc Stuff
 	public static var antimash:Bool = true;
 	public static var memoryCounter:Bool = false;
