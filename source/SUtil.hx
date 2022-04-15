@@ -2,7 +2,7 @@ package;
 
 #if android
 import android.AndroidTools;
-import android.Permissions;
+import android.stuff.Permissions;
 #end
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
@@ -62,7 +62,7 @@ class SUtil
         if (!FileSystem.exists(sPath + "/" + "." + Application.current.meta.get("file") + "/files")){
             FileSystem.createDirectory(sPath + "/" + "." + Application.current.meta.get("file") + "/files");
 		#if android
-	        AndroidTools.makeToast("Carpeta creada!");
+	        SUtil.applicationAlert("Carpeta creada!");
 	        #end
         }
 
@@ -139,7 +139,7 @@ class SUtil
 
         sys.io.File.saveContent(SUtil.getPath() + "system-saves" + fileName + fileExtension, fileData);
         #if android
-        AndroidTools.makeToast("File Saved Successfully!");
+        SUtil.applicationAlert("File Saved Successfully!");
         #end
     }
 }
