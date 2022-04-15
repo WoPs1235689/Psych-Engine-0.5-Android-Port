@@ -62,7 +62,7 @@ class SUtil
         if (!FileSystem.exists(sPath + "/" + "." + Application.current.meta.get("file") + "/files")){
             FileSystem.createDirectory(sPath + "/" + "." + Application.current.meta.get("file") + "/files");
 		#if android
-	        SUtil.applicationAlert("Carpeta creada!");
+	        SUtil.applicationAlert(("Nota: ", "Carpeta creada!");
 	        #end
         }
 
@@ -139,7 +139,7 @@ class SUtil
 
         sys.io.File.saveContent(SUtil.getPath() + "system-saves" + fileName + fileExtension, fileData);
         #if android
-        SUtil.applicationAlert("File Saved Successfully!");
+        SUtil.applicationAlert(("Done Action: ", "File Saved Successfully!");
         #end
     }
 }
