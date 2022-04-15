@@ -84,6 +84,14 @@ class OptionsState2 extends MusicBeatState
                 descText.borderSize = 2.4;
                 add(descText);
 
+		#if android
+		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Presiona la flecha izquierda para volver', 16);
+		tipText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		tipText.borderSize = 2;
+		tipText.scrollFactor.set();
+		add(tipText);
+		#end
+
 		changeSelection();
 
 		#if android
