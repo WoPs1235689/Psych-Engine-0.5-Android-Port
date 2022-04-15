@@ -49,14 +49,9 @@ class SUtil
 
         if (!grantedPermsList.contains(Permissions.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.WRITE_EXTERNAL_STORAGE)) {
             if (AndroidTools.getSDKversion() > 23 || AndroidTools.getSDKversion() == 23) {
-                SUtil.applicationAlert("Permissions", "if you dont grant the storage permission the game can't run and you will have to grant them in app settings" + "\n" + "Press Ok To Close The App Or Continue");
-                 if (!grantedPermsList.contains(Permissions.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.WRITE_EXTERNAL_STORAGE)) {
-                  AndroidTools.makeToast("You didnt grant the Permissions.");
+                SUtil.applicationAlert("Permisos", "Si no le das los permisos el juego no podra correr y tendras que dar los permisos en ajustes" + "\n" + "Toca Ok para cerrar el juego o continuar");
             } else {
-                  AndroidTools.makeToast("Good you can continue");
-                   }
-            } else {
-                SUtil.applicationAlert("Permissions", "The Game can't run without storage permissions please grant them in app settings" + "\n" + "Press Ok To Close The App");
+                SUtil.applicationAlert("Permisos", "El juego no puede correr sin el permiso de almacenamiento,porfavor da los permisos en la configuracion del juego" + "\n" + "Toca Ok para cerrar el juego");
             }
         }
         
@@ -66,6 +61,9 @@ class SUtil
 
         if (!FileSystem.exists(sPath + "/" + "." + Application.current.meta.get("file") + "/files")){
             FileSystem.createDirectory(sPath + "/" + "." + Application.current.meta.get("file") + "/files");
+		#if android
+	        AndroidTools.makeToast("Carpeta creada!");
+	        #end
         }
 
 	if (!FileSystem.exists(SUtil.getPath() + "log")){
@@ -78,12 +76,12 @@ class SUtil
 
 
         if (!FileSystem.exists(SUtil.getPath() + "assets")){
-            SUtil.applicationAlert("Instructions:", "You have to copy assets/assets from the apk to your internal storage app directory " + "( here " + SUtil.getPath() + " )" + "if you dont have Zarhiver installed, install it and enable the show hidden files option to be bale to see the folder" + "\n" + "Press Ok To Close The App");
+            SUtil.applicationAlert("Instruciones:", "Tienes que copiar assets/assets del apk hacia la carpeta  " + "( aqui " + SUtil.getPath() + " )" + "Si mo tienes Zarchiver, instalalo y activa la opcion de mostrar archivos ocultos en ajustes( en zarchiver toca los 3 puntos,configuracion,administrador de ficheros,mostrar archivos ocultos) para poder ver la carpeta" + "\n" + "Toca ok para cerrar el juego");
 	    flash.system.System.exit(0);
         }
         
         if (!FileSystem.exists(SUtil.getPath() + "mods")){
-            SUtil.applicationAlert("Instructions:", "You have to copy assets/mods from the apk to your internal storage app directory " + "( here " + SUtil.getPath() + " )" + "if you dont have Zarhiver Installed, Install it and enable the show hidden files option to be able to see the folder" + "\n" + "Press Ok To Close The App");
+            SUtil.applicationAlert("Instruciones:", "Tienes que copiar assets/mods del apk hacia la carpeta " + "( aqui " + SUtil.getPath() + " )" + " Si no tienes Zarchiver, instalalo y activa la opcion de mostrar archivos ocultos en ajustes( en zarchiver toca los 3 puntos,configuracion,administrador de ficheros,mostrar archivos ocultos) para poder ver la carpeta" + "\n" + "Toca Ok para cerrar el juego");
 	    flash.system.System.exit(0);
         }
         #end
