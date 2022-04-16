@@ -1071,21 +1071,18 @@ class PlayState extends MusicBeatState
 		 
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
-		scoreTxt.visible = !ClientPrefs.hideHud;
-		if(ClientPrefs.scoreType != 'Disabled') { add(scoreTxt); }
+		add(scoreTxt); 
 
 		healthCounter = new FlxText(0, healthBarBG.y - 48, FlxG.width, "" , 20);
                 healthCounter.setFormat(Paths.font("vcr.ttf"), 19, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
                 healthCounter.scrollFactor.set();
                 healthCounter.borderSize = 1.25;
 		healthCounter.alpha = 1;
-                healthCounter.visible = ClientPrefs.healthCounter;
                 add(healthCounter); 
 
 		songInfo = new FlxText(5, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString() , 16);
 		songInfo.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		songInfo.borderSize = 2;
-		healthCounter.visible = ClientPrefs.songInfo;
 		songInfo.scrollFactor.set();
 		add(songInfo);
 
@@ -1095,7 +1092,6 @@ class PlayState extends MusicBeatState
                 judgementCounter.borderQuality = 2;
                 judgementCounter.scrollFactor.set();
                 judgementCounter.screenCenter(Y);
-		judgementCounter.visible = ClientPrefs.judgements;
                 add(judgementCounter);
 
 		if (!ClientPrefs.judgements)
@@ -1108,6 +1104,8 @@ class PlayState extends MusicBeatState
 		remove(laneunderlayOpponent);
 		if (!ClientPrefs.songInfo)
 		remove(songInfo);
+		if (ClientPrefs.scoreTxt == "Disabled" || ClientPrefs.hidehud)
+                remove(scoreTxt);
 
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
