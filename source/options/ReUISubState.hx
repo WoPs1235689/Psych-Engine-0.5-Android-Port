@@ -68,13 +68,13 @@ class ReUISubState extends BaseOptionsMenu
                         true);
                 addOption(option);
 
-/*		var option:Option = new Option('Song Info',
+		var option:Option = new Option('Song Info',
 			'If unchecked, hides Song info.',
 			'songInfo',
 			'bool',
 			true);
-               addOption(option); i think youre causing a crash
-*/		
+               addOption(option); 
+		
 		var option:Option = new Option('Play Hit Sounds',
                         'If checked enables hit sound.',
                         'playHitSound',

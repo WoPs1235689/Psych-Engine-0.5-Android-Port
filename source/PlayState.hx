@@ -1080,7 +1080,7 @@ class PlayState extends MusicBeatState
                 healthCounter.borderSize = 1.25;
 		healthCounter.alpha = 1;
                 healthCounter.visible = ClientPrefs.healthCounter;
-                 add(healthCounter); 
+                add(healthCounter); 
 
 		songInfo = new FlxText(5, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString() , 16);
 		songInfo.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1097,6 +1097,17 @@ class PlayState extends MusicBeatState
                 judgementCounter.screenCenter(Y);
 		judgementCounter.visible = ClientPrefs.judgements;
                 add(judgementCounter);
+
+		if (!ClientPrefs.judgements)
+		remove(judgementCounter);
+		if (!ClientPrefs.healthCounter)
+		remove(healthCounter);
+		if (ClientPrefs.laneOpacity == 0)
+		remove(laneunderlay);
+		if (ClientPrefs.opponentLaneOpacity == 0)
+		remove(laneunderlayOpponent);
+		if (!ClientPrefs.songInfo)
+		remove(songInfo);
 
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
@@ -1246,7 +1257,6 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.playHitSound)
 		{
 			CoolUtil.precacheSound('Tick');
-			FlxG.sound.play(Paths.sound('Tick'), 0);
 		}
 
 		#if desktop
@@ -1377,7 +1387,7 @@ class PlayState extends MusicBeatState
 		var lol:String = 'Score:' + songScore; //simple fix
 		scoreTxt.text = lol;
 		if (cpuControlled)
-			lol = 'BotScore:' + botSongScore;
+			lol = 'Bot Score:' + botSongScore;
 
 		switch (ClientPrefs.scoreStyle)
 		{
@@ -3595,9 +3605,9 @@ class PlayState extends MusicBeatState
 		msTxt.text = msTiming + " ms";
 		msTxt.size = 20;
 
-		if (msTxt.alpha != 1)  {
-				msTxt.alpha = 1;
-		}
+//		if (msTxt.alpha != 1)  { //bruh is it bad to reput it to 1 if its 1?
+				msTxt.alpha = 1; 
+//		}
 				add(msTxt);
 
 		rating.visible = !ClientPrefs.hideHud;
@@ -3656,17 +3666,9 @@ class PlayState extends MusicBeatState
 		var comboSplit:Array<String> = (combo + "").split('');
 
                 if (ClientPrefs.normalCombo)
-                  {
-			switch (comboSplit.length)
-                        {
-                                case 1:
-                                seperatedScore.push(0);
-                                seperatedScore.push(0);
-
-                                case 2:
-                                seperatedScore.push(0);
-                        }
-                  }
+                {
+                        seperatedScore.push(0);
+		}
 // credits to kade engine
 
 			for(i in 0...comboSplit.length)
@@ -3677,10 +3679,9 @@ class PlayState extends MusicBeatState
 	
 		if(combo >= 1000) {
 			seperatedScore.push(Math.floor(combo / 1000) % 10);
-		}
-//		seperatedScore.push(Math.floor(combo / 100) % 10);
-//		seperatedScore.push(Math.floor(combo / 10) % 10);
-//		seperatedScore.push(combo % 10);
+			//the combo value can increase but we dont want to cause a crash if its high
+		} 
+
 
 		var daLoop:Int = 0;
 		for (i in seperatedScore)
@@ -4111,9 +4112,9 @@ class PlayState extends MusicBeatState
 
 			if (!note.isSustainNote)
 			{
-				combo += 1;
+				if (combo != 999) combo += 1;
 				popUpScore(note);
-				if(combo > 9999) combo = 9999;
+				//lol kinda more softcoded
 			}
 
 	//		if (health != 2) 

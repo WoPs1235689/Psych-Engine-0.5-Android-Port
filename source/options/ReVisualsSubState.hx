@@ -33,14 +33,7 @@ class ReVisualsSubState extends BaseOptionsMenu
 	{
 		title = 'Visuals';
 		rpcTitle = 'Visuals Settings Menu'; //for Discord Rich Presence
-		
-		var option:Option = new Option('Play Hit Sounds',
-                        'If checked enables hit sounds.',
-                        'playHitSound',
-                        'bool',
-                        false);
-                addOption(option);		
-	
+			
 		var option:Option = new Option('Icon Boping',
                         'If checked enables icon boping.',
                         'iconBoping',
