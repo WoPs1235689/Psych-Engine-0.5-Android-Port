@@ -1104,7 +1104,7 @@ class PlayState extends MusicBeatState
 		remove(laneunderlayOpponent);
 		if (!ClientPrefs.songInfo)
 		remove(songInfo);
-		if (ClientPrefs.scoreTxt == "Disabled" || ClientPrefs.hideHud)
+		if (ClientPrefs.scoreType == "Disabled" || ClientPrefs.hideHud)
                 remove(scoreTxt);
 
 
