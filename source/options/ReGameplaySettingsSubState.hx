@@ -43,7 +43,7 @@ class ReGameplaySettingsSubState extends BaseOptionsMenu
 
 		var option:Option = new Option('Ke sustains',
                         'If checked, uses Ke like sustains.',
-                        'kesustains',
+                        'keSustains',
                         'bool',
                         false);
                 addOption(option);
