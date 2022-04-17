@@ -52,6 +52,7 @@ class ClientPrefs {
 	public static var memoryCounter:Bool = false;
 	public static var playHitSound:Bool = false;
 	public static var normalCombo:Bool = false;
+	public static var sustainhp:Bool = true;
 // End
 	#if mobile
 	public static var controllerMode:Bool = true;
@@ -142,6 +143,7 @@ class ClientPrefs {
 		FlxG.save.data.memoryCounter = memoryCounter;
 		FlxG.save.data.antimash = antimash;
 		FlxG.save.data.playHitSound = playHitSound;
+		FlxG.save.data.sustainhp = sustainhp;
 		// UI stuff
 		FlxG.save.data.judgements = judgements;
 		FlxG.save.data.healthCounter = healthCounter;
@@ -314,6 +316,9 @@ class ClientPrefs {
 
 		if(FlxG.save.data.playHitSound != null) {
                         playHitSound = FlxG.save.data.playHitSound;
+                }
+		if(FlxG.save.data.sustainhp != null) {
+                        sustainhp = FlxG.save.data.sustainhp;
                 }
 	// End
 		if(FlxG.save.data.ratingOffset != null) {

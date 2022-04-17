@@ -41,11 +41,11 @@ class ReGameplaySettingsSubState extends BaseOptionsMenu
 			true); 
 		addOption(option);
 
-		var option:Option = new Option('Ke sustains',
-                        'If checked, uses Ke like sustains.',
-                        'keSustains',
+		var option:Option = new Option('Sustain Hp',
+                        'If unchecked, disables hp gained from sustains.',
+                        'sustainhp',
                         'bool',
-                        false);
+                        true);
                 addOption(option);
 		
 		var option:Option = new Option('Moving HP bar',

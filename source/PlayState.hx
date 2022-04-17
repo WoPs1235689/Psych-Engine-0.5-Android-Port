@@ -4115,8 +4115,10 @@ class PlayState extends MusicBeatState
 				//lol kinda more softcoded
 			}
 
-//			if (ClientPrefs.keSustains && !note.isSustainNote) 
+			
 			health += note.hitHealth * healthGain;
+			if (!ClientPrefs.sustainhp && note.isSustainNote)
+			health -= note.hitHealth * healthGain;
 			
 
 			if(!note.noAnimation) {
